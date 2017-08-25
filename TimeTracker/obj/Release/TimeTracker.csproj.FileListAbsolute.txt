@@ -1,0 +1,9 @@
+C:\repo\TimeTracker\TimeTracker\TimeTracker\bin\Release\TimeTracker.exe.config
+C:\repo\TimeTracker\TimeTracker\TimeTracker\bin\Release\TimeTracker.exe
+C:\repo\TimeTracker\TimeTracker\TimeTracker\bin\Release\TimeTracker.pdb
+C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Release\TimeTracker.Form1.resources
+C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Release\TimeTracker.Properties.Resources.resources
+C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Release\TimeTracker.csproj.GenerateResource.Cache
+C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Release\TimeTracker.exe
+C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Release\TimeTracker.pdb
+C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Release\TimeTracker.csprojResolveAssemblyReference.cache

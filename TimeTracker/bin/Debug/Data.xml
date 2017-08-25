@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfProjectTask xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectTask>
+    <ProjectTitle>test with date</ProjectTitle>
+    <ProjectNotes>date is added</ProjectNotes>
+    <TimeSpent>00:00:14</TimeSpent>
+    <DateOfEntry>8/24/2017</DateOfEntry>
+  </ProjectTask>
+  <ProjectTask>
+    <ProjectTitle>test 2</ProjectTitle>
+    <ProjectNotes>adfsfsafsdf</ProjectNotes>
+    <TimeSpent>00:00:05</TimeSpent>
+    <DateOfEntry>8/24/2017</DateOfEntry>
+  </ProjectTask>
+  <ProjectTask>
+    <ProjectTitle>test no start</ProjectTitle>
+    <ProjectNotes>sfdsfsdfasdf</ProjectNotes>
+    <TimeSpent>00:00:00</TimeSpent>
+    <DateOfEntry>8/24/2017</DateOfEntry>
+  </ProjectTask>
+  <ProjectTask>
+    <ProjectTitle>test</ProjectTitle>
+    <ProjectNotes>test</ProjectNotes>
+    <TimeSpent>00:00:00</TimeSpent>
+    <DateOfEntry>8/24/2017</DateOfEntry>
+  </ProjectTask>
+  <ProjectTask>
+    <ProjectTitle>t</ProjectTitle>
+    <ProjectNotes>hafdsff
+asdfsfs
+sdafdsfsafda
+sdfsdfasfsafd
+sdafdsfdsaf</ProjectNotes>
+    <TimeSpent>00:00:11</TimeSpent>
+    <DateOfEntry>8/24/2017</DateOfEntry>
+  </ProjectTask>
+  <ProjectTask>
+    <ProjectTitle>sfsadfdsaf</ProjectTitle>
+    <ProjectNotes>sfsadfasfdsfaf</ProjectNotes>
+    <TimeSpent>00:00:00</TimeSpent>
+    <DateOfEntry>8/24/2017</DateOfEntry>
+  </ProjectTask>
+  <ProjectTask>
+    <ProjectTitle>afadsf</ProjectTitle>
+    <ProjectNotes>sdafdsfdsaf</ProjectNotes>
+    <TimeSpent>00:00:00</TimeSpent>
+    <DateOfEntry>8/24/2017 9:36:10 PM</DateOfEntry>
+  </ProjectTask>
+</ArrayOfProjectTask>
