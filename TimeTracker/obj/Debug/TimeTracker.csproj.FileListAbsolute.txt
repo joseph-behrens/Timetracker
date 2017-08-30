@@ -7,3 +7,4 @@ C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Debug\TimeTracker.Properties.Res
 C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Debug\TimeTracker.csproj.GenerateResource.Cache
 C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Debug\TimeTracker.exe
 C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Debug\TimeTracker.pdb
+C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Debug\TimeTracker.Form2.resources

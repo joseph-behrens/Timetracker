@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace TimeTracker
@@ -43,9 +44,11 @@ namespace TimeTracker
             }
         }
 
-        public void ViewReport()
+        public IEnumerable<XElement> ViewReport()
         {
-            System.Diagnostics.Process.Start(filePath);
+            XElement xml = XElement.Load(filePath);
+            IEnumerable<XElement> projects = xml.Elements("ProjectTask");
+            return projects;
         }
     }
 }

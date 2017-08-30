@@ -20,7 +20,11 @@ namespace TimeTracker
         public Form1()
         {
             InitializeComponent();
+            Rectangle workingArea = Screen.GetWorkingArea(this);
+            this.Location = new Point(workingArea.Right - Size.Width,
+                                      workingArea.Bottom - Size.Height);
             writeData = new Report();
+            
             try
             {
                 writeData.OpenList();
@@ -90,6 +94,9 @@ namespace TimeTracker
 
         private void buttonReport_Click(object sender, EventArgs e)
         {
+            Form2 f = new Form2();
+            f.SetReport(writeData);
+            f.Show();
             writeData.ViewReport();
         }
 
@@ -114,6 +121,11 @@ namespace TimeTracker
         private void buttonMdown_Click(object sender, EventArgs e)
         {
             addedTime -= new TimeSpan(0, 1, 0);
+        }
+
+        private void buttonOpenAnother_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("TimeTracker.exe");
         }
     }
 }

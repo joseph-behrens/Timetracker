@@ -7,3 +7,4 @@ C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Release\TimeTracker.csproj.Gener
 C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Release\TimeTracker.exe
 C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Release\TimeTracker.pdb
 C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Release\TimeTracker.csprojResolveAssemblyReference.cache
+C:\repo\TimeTracker\TimeTracker\TimeTracker\obj\Release\TimeTracker.Form2.resources
