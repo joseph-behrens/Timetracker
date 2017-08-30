@@ -16,6 +16,7 @@ namespace TimeTracker
     {
         Stopwatch stopWatch = new Stopwatch();
         Report writeData;
+        TimeSpan addedTime;
         public Form1()
         {
             InitializeComponent();
@@ -62,7 +63,7 @@ namespace TimeTracker
 
         private void UpdateTimeText()
         {
-            TimeSpan ts = stopWatch.Elapsed;
+            TimeSpan ts = stopWatch.Elapsed + addedTime;
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}",
                 ts.Hours, ts.Minutes, ts.Seconds);
             textBoxTime.Text = elapsedTime;
@@ -90,6 +91,29 @@ namespace TimeTracker
         private void buttonReport_Click(object sender, EventArgs e)
         {
             writeData.ViewReport();
+        }
+
+        private void buttonHup_Click(object sender, EventArgs e)
+        {
+            addedTime += new TimeSpan(1, 0, 0);
+            UpdateTimeText();
+        }
+
+        private void buttonHdown_Click(object sender, EventArgs e)
+        {
+            addedTime -= new TimeSpan(1, 0, 0);
+            UpdateTimeText();
+        }
+
+        private void buttonMup_Click(object sender, EventArgs e)
+        {
+            addedTime += new TimeSpan(0, 1, 0);
+            UpdateTimeText();
+        }
+
+        private void buttonMdown_Click(object sender, EventArgs e)
+        {
+            addedTime -= new TimeSpan(0, 1, 0);
         }
     }
 }

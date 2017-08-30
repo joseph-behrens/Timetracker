@@ -84,5 +84,11 @@
   <ItemGroup>
     <None Include="Resources\Caret_right_font_awesome.svg.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\go_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\go_down.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

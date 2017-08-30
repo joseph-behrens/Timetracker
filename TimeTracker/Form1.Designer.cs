@@ -40,6 +40,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonReport = new System.Windows.Forms.Button();
+            this.buttonMup = new System.Windows.Forms.Button();
+            this.buttonMdown = new System.Windows.Forms.Button();
+            this.buttonHdown = new System.Windows.Forms.Button();
+            this.buttonHup = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // timer1
@@ -48,7 +52,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(557, 12);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(545, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(36, 23);
             this.button1.TabIndex = 0;
@@ -58,6 +63,7 @@
             // 
             // textBoxTime
             // 
+            this.textBoxTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxTime.Location = new System.Drawing.Point(487, 14);
             this.textBoxTime.Name = "textBoxTime";
             this.textBoxTime.ReadOnly = true;
@@ -68,6 +74,9 @@
             // 
             // textBoxProject
             // 
+            this.textBoxProject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxProject.Location = new System.Drawing.Point(70, 14);
             this.textBoxProject.Name = "textBoxProject";
             this.textBoxProject.Size = new System.Drawing.Size(395, 20);
@@ -84,6 +93,9 @@
             // 
             // textBoxNotes
             // 
+            this.textBoxNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxNotes.Location = new System.Drawing.Point(70, 41);
             this.textBoxNotes.Multiline = true;
             this.textBoxNotes.Name = "textBoxNotes";
@@ -101,9 +113,10 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(487, 126);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 23);
+            this.button2.Size = new System.Drawing.Size(94, 23);
             this.button2.TabIndex = 6;
             this.button2.Text = "Submit";
             this.button2.UseVisualStyleBackColor = true;
@@ -111,9 +124,10 @@
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(487, 41);
+            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReset.Location = new System.Drawing.Point(487, 68);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(106, 23);
+            this.buttonReset.Size = new System.Drawing.Size(94, 23);
             this.buttonReset.TabIndex = 7;
             this.buttonReset.Text = "Reset Timer";
             this.buttonReset.UseVisualStyleBackColor = true;
@@ -121,19 +135,68 @@
             // 
             // buttonReport
             // 
-            this.buttonReport.Location = new System.Drawing.Point(487, 70);
+            this.buttonReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReport.Location = new System.Drawing.Point(487, 97);
             this.buttonReport.Name = "buttonReport";
-            this.buttonReport.Size = new System.Drawing.Size(106, 23);
+            this.buttonReport.Size = new System.Drawing.Size(94, 23);
             this.buttonReport.TabIndex = 8;
             this.buttonReport.Text = "Report";
             this.buttonReport.UseVisualStyleBackColor = true;
             this.buttonReport.Click += new System.EventHandler(this.buttonReport_Click);
             // 
+            // buttonMup
+            // 
+            this.buttonMup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMup.Image = global::TimeTracker.Properties.Resources.go_up;
+            this.buttonMup.Location = new System.Drawing.Point(537, 41);
+            this.buttonMup.Name = "buttonMup";
+            this.buttonMup.Size = new System.Drawing.Size(19, 23);
+            this.buttonMup.TabIndex = 11;
+            this.buttonMup.UseVisualStyleBackColor = true;
+            this.buttonMup.Click += new System.EventHandler(this.buttonMup_Click);
+            // 
+            // buttonMdown
+            // 
+            this.buttonMdown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMdown.Image = global::TimeTracker.Properties.Resources.go_down;
+            this.buttonMdown.Location = new System.Drawing.Point(562, 41);
+            this.buttonMdown.Name = "buttonMdown";
+            this.buttonMdown.Size = new System.Drawing.Size(19, 23);
+            this.buttonMdown.TabIndex = 12;
+            this.buttonMdown.UseVisualStyleBackColor = true;
+            this.buttonMdown.Click += new System.EventHandler(this.buttonMdown_Click);
+            // 
+            // buttonHdown
+            // 
+            this.buttonHdown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonHdown.Image = global::TimeTracker.Properties.Resources.go_down;
+            this.buttonHdown.Location = new System.Drawing.Point(512, 41);
+            this.buttonHdown.Name = "buttonHdown";
+            this.buttonHdown.Size = new System.Drawing.Size(19, 23);
+            this.buttonHdown.TabIndex = 10;
+            this.buttonHdown.UseVisualStyleBackColor = true;
+            this.buttonHdown.Click += new System.EventHandler(this.buttonHdown_Click);
+            // 
+            // buttonHup
+            // 
+            this.buttonHup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonHup.Image = global::TimeTracker.Properties.Resources.go_up;
+            this.buttonHup.Location = new System.Drawing.Point(487, 41);
+            this.buttonHup.Name = "buttonHup";
+            this.buttonHup.Size = new System.Drawing.Size(19, 23);
+            this.buttonHup.TabIndex = 9;
+            this.buttonHup.UseVisualStyleBackColor = true;
+            this.buttonHup.Click += new System.EventHandler(this.buttonHup_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 161);
+            this.ClientSize = new System.Drawing.Size(592, 161);
+            this.Controls.Add(this.buttonMdown);
+            this.Controls.Add(this.buttonMup);
+            this.Controls.Add(this.buttonHdown);
+            this.Controls.Add(this.buttonHup);
             this.Controls.Add(this.buttonReport);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.button2);
@@ -164,6 +227,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button buttonReport;
+        private System.Windows.Forms.Button buttonHup;
+        private System.Windows.Forms.Button buttonHdown;
+        private System.Windows.Forms.Button buttonMup;
+        private System.Windows.Forms.Button buttonMdown;
     }
 }
 
