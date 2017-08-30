@@ -20,6 +20,11 @@ namespace TimeTracker
         public Form1()
         {
             InitializeComponent();
+            toolTip1.SetToolTip(buttonHup, "Add one hour");
+            toolTip1.SetToolTip(buttonHdown, "Subtract one hour");
+            toolTip1.SetToolTip(buttonMup, "Add one minute");
+            toolTip1.SetToolTip(buttonMdown, "Subtract one minute");
+            toolTip1.SetToolTip(buttonOpenAnother, "Open another TimeTracker");
             Rectangle workingArea = Screen.GetWorkingArea(this);
             this.Location = new Point(workingArea.Right - Size.Width,
                                       workingArea.Bottom - Size.Height);
@@ -70,7 +75,16 @@ namespace TimeTracker
             TimeSpan ts = stopWatch.Elapsed + addedTime;
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}",
                 ts.Hours, ts.Minutes, ts.Seconds);
-            textBoxTime.Text = elapsedTime;
+            if(ts >= new TimeSpan(0, 0, 0))
+            {
+                textBoxTime.Text = elapsedTime;
+            }
+            else
+            {
+                stopWatch.Reset();
+                addedTime = new TimeSpan(0, 0, 0);
+                stopWatch.Start();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -121,6 +135,7 @@ namespace TimeTracker
         private void buttonMdown_Click(object sender, EventArgs e)
         {
             addedTime -= new TimeSpan(0, 1, 0);
+            UpdateTimeText();
         }
 
         private void buttonOpenAnother_Click(object sender, EventArgs e)

@@ -44,6 +44,7 @@
             this.buttonHdown = new System.Windows.Forms.Button();
             this.buttonHup = new System.Windows.Forms.Button();
             this.buttonOpenAnother = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // timer1
@@ -233,6 +234,7 @@
         private System.Windows.Forms.Button buttonMup;
         private System.Windows.Forms.Button buttonMdown;
         private System.Windows.Forms.Button buttonOpenAnother;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
