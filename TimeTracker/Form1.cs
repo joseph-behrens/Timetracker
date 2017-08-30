@@ -10,6 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
+/// <summary>
+/// TODO: Add stopwatch class and move stopWatch logic
+/// </summary>
 namespace TimeTracker
 {
     public partial class Form1 : Form
@@ -101,6 +106,7 @@ namespace TimeTracker
         {
             textBoxNotes.Clear();
             textBoxProject.Clear();
+            addedTime = new TimeSpan(0, 0, 0);
             stopWatch.Reset();
             textBoxTime.Text = "00:00:00";
             button1.Text = ">";
