@@ -25,6 +25,13 @@ namespace TimeTracker
                 dataGridView1.Rows.Add(project.Element("DateOfEntry").Value, project.Element("TimeSpent").Value,
                         project.Element("ProjectTitle").Value, project.Element("ProjectNotes").Value);
             }
+
+            dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Descending);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
