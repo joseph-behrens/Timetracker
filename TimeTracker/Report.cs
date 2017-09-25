@@ -12,11 +12,15 @@ namespace TimeTracker
     [Serializable]
     public class Report
     {
+
         string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TimeTracker/data.xml");
         List<ProjectTask> trackedProjects;
         public Report() { }
         public void SaveList()
         {
+            var appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var timeTrackerFolder = Path.Combine(appDataFolder, "TimeTracker");
+            Directory.CreateDirectory(timeTrackerFolder);
             XmlSerializer xs = new XmlSerializer(typeof(List<ProjectTask>));
             TextWriter tw = new StreamWriter(filePath);
             xs.Serialize(tw, trackedProjects);

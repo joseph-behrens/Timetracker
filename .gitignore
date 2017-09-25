@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/TimeTracker/v15/sqlite3/storage.ide
+/TimeTracker/obj
