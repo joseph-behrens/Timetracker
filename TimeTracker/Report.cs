@@ -50,9 +50,16 @@ namespace TimeTracker
 
         public IEnumerable<XElement> ViewReport()
         {
-            XElement xml = XElement.Load(filePath);
-            IEnumerable<XElement> projects = xml.Elements("ProjectTask");
-            return projects;
+            try
+            {
+                XElement xml = XElement.Load(filePath);
+                IEnumerable<XElement> projects = xml.Elements("ProjectTask");
+                return projects;
+            }
+            catch (FileNotFoundException) {
+                Console.WriteLine("xml not intialized");
+                return null;
+            }
         }
     }
 }

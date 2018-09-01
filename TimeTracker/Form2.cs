@@ -20,10 +20,14 @@ namespace TimeTracker
 
         public void SetReport(Report reportData)
         {
-            foreach (var project in reportData.ViewReport())
+            if (reportData.ViewReport() != null)
             {
-                dataGridView1.Rows.Add(project.Element("DateOfEntry").Value, project.Element("TimeSpent").Value,
-                        project.Element("ProjectTitle").Value, project.Element("ProjectNotes").Value);
+
+                foreach (var project in reportData.ViewReport())
+                {
+                    dataGridView1.Rows.Add(project.Element("DateOfEntry").Value, project.Element("TimeSpent").Value,
+                            project.Element("ProjectTitle").Value, project.Element("ProjectNotes").Value);
+                }
             }
 
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Descending);
