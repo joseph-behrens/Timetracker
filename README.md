@@ -4,7 +4,10 @@ This tool's goal is to provide a tool that is always on the screen to help with 
 
 ## Installation
 
-Open the TimeTracker.sln in Visual Studio and run a build using the Release profile. The executable will show up in ..\TimeTracker\bin\Release\TimeTracker.exe
+Go to Releases and download the executable.
+
+Or...
+Open TimeTracker.sln in Visual Studio and run a build using the Release profile. The executable will show up in ..\TimeTracker\bin\Release\TimeTracker.exe
 
 At this point the executable is standalone, you can copy/paste it to any location you'd like.
 
