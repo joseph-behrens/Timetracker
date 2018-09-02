@@ -17,7 +17,7 @@ namespace TimeTracker
         public string TimeSpent { get; set; }
         public string DateOfEntry { get => dateOfEntry; set => dateOfEntry = value; }
 
-        private string dateOfEntry = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+        private string dateOfEntry = DateTime.Now.ToString("yyyy/M/d h:m tt");
 
         public ProjectTask()
         {
