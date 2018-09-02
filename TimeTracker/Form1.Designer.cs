@@ -65,9 +65,9 @@
             // textBoxTime
             // 
             this.textBoxTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTime.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBoxTime.Location = new System.Drawing.Point(300, 14);
             this.textBoxTime.Name = "textBoxTime";
-            this.textBoxTime.ReadOnly = true;
             this.textBoxTime.Size = new System.Drawing.Size(53, 20);
             this.textBoxTime.TabIndex = 1;
             this.textBoxTime.Text = "00:00:00";
