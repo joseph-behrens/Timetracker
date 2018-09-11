@@ -7,12 +7,10 @@ The goal of this project is to provide a tool that is always on the screen to he
 
 ## Installation
 
-Download the [Latest Release](https://github.com/joseph-behrens/Timetracker/releases/latest) as a Windows .exe executable file.
+Download the [Latest Release](https://github.com/joseph-behrens/Timetracker/releases/latest) and extract the zip package. Run setup.exe to install.
 
 Or...  
 open TimeTracker.sln in Visual Studio and run a build using the Release profile. The executable will show up in ..\TimeTracker\bin\Release\TimeTracker.exe
-
-At this point the executable is standalone, you can copy/paste it to any location you'd like.
 
 When you first launch a Sqlite database will be created in your user's AppData/Roaming folder with a TimeTracker folder with the name of TimeTracker.db. This will hold your time entries.
 
