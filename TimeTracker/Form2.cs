@@ -18,12 +18,12 @@ namespace TimeTracker
             InitializeComponent();
         }
 
-        public void SetReport(Report reportData)
+        public void SetReport()
         {
-            if (reportData.ViewReport() != null)
+            if (Report.ViewReport() != null)
             {
 
-                foreach (var project in reportData.ViewReport())
+                foreach (var project in Report.ViewReport())
                 {
                     dataGridView1.Rows.Add(project.DateOfEntry, project.TimeSpent, project.ProjectTitle, project.ProjectNotes);
                 }

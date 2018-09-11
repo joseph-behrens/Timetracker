@@ -23,7 +23,7 @@ namespace TimeTracker
                 using (SQLiteConnection dbConnection = new SQLiteConnection(connectionString))
                 {
                     dbConnection.Open();
-                    // TODO: Design database and classes, Project should be own, TimeEntry should be own, etc.
+                    // TODO: Better design database and classes, Project should be own, TimeEntry should be own, etc.
                     string sql = "CREATE TABLE ProjectTask (ProjectTitle VARCHAR(32), ProjectNotes VARCHAR(250), TimeSpent VARCHAR(32), DateOfEntry VARCHAR(32));";
                     SQLiteCommand cmd = new SQLiteCommand(sql, dbConnection);
                     cmd.ExecuteNonQuery();
@@ -50,6 +50,18 @@ namespace TimeTracker
                     ProjectTasks.Add(thisTask);
                 }
                 return ProjectTasks;
+            }
+        }
+
+        public static void AddTask(ProjectTask projectTask)
+        {
+            using (SQLiteConnection dbConnection = new SQLiteConnection(connectionString))
+            {
+                dbConnection.Open();
+                string sql = String.Format("INSERT INTO ProjectTask (ProjectTitle, ProjectNotes, TimeSpent, DateOfEntry) VALUES ('{0}','{1}','{2}','{3}');",
+                    projectTask.ProjectTitle, projectTask.ProjectNotes, projectTask.TimeSpent, projectTask.DateOfEntry);
+                SQLiteCommand cmd = new SQLiteCommand(sql, dbConnection);
+                cmd.ExecuteNonQuery();
             }
         }
     }

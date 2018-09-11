@@ -37,14 +37,6 @@ namespace TimeTracker
             Rectangle workingArea = Screen.GetWorkingArea(this);
             this.Location = new Point(workingArea.Right - Size.Width,
                                       workingArea.Bottom - Size.Height);
-            writeData = new Report();
-            
-            try
-            {
-                writeData.OpenList();
-                Console.WriteLine("Opened existing list");
-            }
-            catch { Console.WriteLine("Data.xml not yet intialized"); }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -100,9 +92,7 @@ namespace TimeTracker
         {
             stopWatch.Stop();
             ProjectTask projectTask = new ProjectTask(textBoxProject.Text, textBoxNotes.Text, textBoxTime.Text);
-            writeData.AddTaskToList(projectTask);
-            writeData.SaveList();
-            writeData.OpenList();
+            SqLiteDb.AddTask(projectTask);
             ClearForm();
         }
 
@@ -119,9 +109,9 @@ namespace TimeTracker
         private void buttonReport_Click(object sender, EventArgs e)
         {
             Form2 f = new Form2();
-            f.SetReport(writeData);
+            f.SetReport();
             f.Show();
-            writeData.ViewReport();
+            Report.ViewReport();
         }
 
         private void buttonHup_Click(object sender, EventArgs e)
