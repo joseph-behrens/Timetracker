@@ -48,18 +48,9 @@ namespace TimeTracker
             }
         }
 
-        public IEnumerable<XElement> ViewReport()
+        public IEnumerable<ProjectTask> ViewReport()
         {
-            try
-            {
-                XElement xml = XElement.Load(filePath);
-                IEnumerable<XElement> projects = xml.Elements("ProjectTask");
-                return projects;
-            }
-            catch (FileNotFoundException) {
-                Console.WriteLine("xml not intialized");
-                return null;
-            }
+            return SqLiteDb.GetProjectTasks();
         }
     }
 }

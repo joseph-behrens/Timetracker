@@ -25,8 +25,7 @@ namespace TimeTracker
 
                 foreach (var project in reportData.ViewReport())
                 {
-                    dataGridView1.Rows.Add(project.Element("DateOfEntry").Value, project.Element("TimeSpent").Value,
-                            project.Element("ProjectTitle").Value, project.Element("ProjectNotes").Value);
+                    dataGridView1.Rows.Add(project.DateOfEntry, project.TimeSpent, project.ProjectTitle, project.ProjectNotes);
                 }
             }
 

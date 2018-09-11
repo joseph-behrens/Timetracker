@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 
 
@@ -22,8 +23,11 @@ namespace TimeTracker
         Stopwatch stopWatch = new Stopwatch();
         Report writeData;
         TimeSpan addedTime;
+
+
         public Form1()
         {
+            string dbFile = SqLiteDb.GetPath();
             InitializeComponent();
             toolTip1.SetToolTip(buttonHup, "Add one hour");
             toolTip1.SetToolTip(buttonHdown, "Subtract one hour");
