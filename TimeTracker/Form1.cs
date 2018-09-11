@@ -21,9 +21,7 @@ namespace TimeTracker
     public partial class Form1 : Form
     {
         Stopwatch stopWatch = new Stopwatch();
-        Report writeData;
         TimeSpan addedTime;
-
 
         public Form1()
         {
