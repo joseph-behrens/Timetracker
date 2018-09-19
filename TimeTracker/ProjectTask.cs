@@ -30,5 +30,13 @@ namespace TimeTracker
             ProjectNotes = projectNotes;
             TimeSpent = timeSpent;
         }
+
+        public ProjectTask(string projectTitle, string projectNotes, string timeSpent, string dateOfEntry)
+        {
+            ProjectTitle = projectTitle;
+            ProjectNotes = projectNotes;
+            TimeSpent = timeSpent;
+            DateOfEntry = dateOfEntry;
+        }
     }
 }

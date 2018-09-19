@@ -27,9 +27,6 @@ namespace TimeTracker
                     string sql = "CREATE TABLE ProjectTask (ProjectTitle VARCHAR(32), ProjectNotes VARCHAR(250), TimeSpent VARCHAR(32), DateOfEntry VARCHAR(32));";
                     SQLiteCommand cmd = new SQLiteCommand(sql, dbConnection);
                     cmd.ExecuteNonQuery();
-                    sql = "INSERT INTO ProjectTask (ProjectTitle, ProjectNotes, TimeSpent, DateOfEntry) VALUES ('Test','Testing testing testing','03:00:00','2019/9/10 04:43 PM');";
-                    cmd = new SQLiteCommand(sql, dbConnection);
-                    cmd.ExecuteNonQuery();
                 }
             }
             return databaseFile;
@@ -46,7 +43,7 @@ namespace TimeTracker
                 SQLiteDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    ProjectTask thisTask = new ProjectTask(reader["ProjectTitle"].ToString(), reader["ProjectNotes"].ToString(), reader["TimeSpent"].ToString());
+                    ProjectTask thisTask = new ProjectTask(reader["ProjectTitle"].ToString(), reader["ProjectNotes"].ToString(), reader["TimeSpent"].ToString(), reader["DateOfEntry"].ToString());
                     ProjectTasks.Add(thisTask);
                 }
                 return ProjectTasks;
