@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TimeTracker.Controllers;
 using TimeTracker.Data;
 
 namespace TimeTracker
@@ -20,14 +21,14 @@ namespace TimeTracker
 
         internal void SetReport()
         {
-            var _clients = DatabaseHelper.GetClients();
-            var _projects = DatabaseHelper.GetProjects();
-            var _tasks = DatabaseHelper.GetTasks();
+            var _clients = ClientController.GetClients();
+            var _projects = ProjectController.GetProjects();
+            var _tasks = TaskController.GetTasks();
 
             foreach (var _task in _tasks)
             {
-                Project _project = DatabaseHelper.GetProjectById(_task.ProjectId);
-                Client _client = DatabaseHelper.GetClientById(_project.ClientId);
+                Project _project = ProjectController.GetProjectById(_task.ProjectId);
+                Client _client = ClientController.GetClientById(_project.ClientId);
                 dataGridView1.Rows.Add(_task.DateOfEntry, _task.TimeSpent, _client.Name, _project.Name, _task.Notes);
             }
 

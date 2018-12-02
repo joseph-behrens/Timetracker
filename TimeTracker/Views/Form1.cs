@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
 using TimeTracker.Data;
+using TimeTracker.Controllers;
 
-/// <summary>
-/// TODO: Add stopwatch class and move stopWatch logic
-/// </summary>
+
 namespace TimeTracker
 {
     public partial class Form1 : Form
@@ -114,7 +108,7 @@ namespace TimeTracker
 
             if (!(_newClient.Exists()))
             {
-                DatabaseHelper.AddClient(_newClient);
+                ClientController.AddClient(_newClient);
             }
 
             _newProject.ClientId = _newClient.Id;
@@ -122,15 +116,15 @@ namespace TimeTracker
 
             if (_newProject.Exists())
             {
-                _newProject.Id = DatabaseHelper.GetProjectsByClientId(_newClient.Id).Where(p => p.Name == _newProject.Name).First().Id;
+                _newProject.Id = ProjectController.GetProjectsByClientId(_newClient.Id).Where(p => p.Name == _newProject.Name).First().Id;
             }
             else
             {
-                DatabaseHelper.AddProject(_newProject);
+                ProjectController.AddProject(_newProject);
             }
 
             Task _newTask = new Task(_newProject.Id, textBoxNotes.Text, textBoxTime.Text);
-            DatabaseHelper.AddTask(_newTask);
+            TaskController.AddTask(_newTask);
             ClearForm();
         }
 
@@ -202,7 +196,7 @@ namespace TimeTracker
         private void UpdateClientDropDown()
         {
             ClientDropDown.Items.Clear();
-            List<Client> _clients = DatabaseHelper.GetClients();
+            List<Client> _clients = ClientController.GetClients();
 
             foreach (var _client in _clients)
             {
@@ -215,8 +209,8 @@ namespace TimeTracker
             ProjectDropDown.Items.Clear();
             ProjectDropDown.ResetText();
 
-            var _clientId = DatabaseHelper.GetClientByName(_clientName).Id;
-            List<Project> _projects = DatabaseHelper.GetProjectsByClientId(_clientId);
+            var _clientId = ClientController.GetClientByName(_clientName).Id;
+            List<Project> _projects = ProjectController.GetProjectsByClientId(_clientId);
 
             foreach (var _project in _projects)
             {

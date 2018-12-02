@@ -1,11 +1,7 @@
 ﻿using SQLite;
 using SQLiteNetExtensions.Attributes;
+using TimeTracker.Controllers;
 using TimeTracker.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TimeTracker
 {
@@ -30,9 +26,9 @@ namespace TimeTracker
             ClientId = _clientId;
         }
 
-        internal bool Exists()
+        public bool Exists()
         {
-            Project _existingProject = DatabaseHelper.GetProjectByName(Name);
+            Project _existingProject = ProjectController.GetProjectByName(Name);
             if (_existingProject != null && _existingProject.ClientId == ClientId)
             {
                 return true;

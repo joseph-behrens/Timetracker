@@ -1,10 +1,7 @@
 ﻿using SQLite;
 using SQLiteNetExtensions.Attributes;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TimeTracker.Controllers;
 using TimeTracker.Data;
 
 namespace TimeTracker
@@ -28,7 +25,7 @@ namespace TimeTracker
 
         internal bool Exists()
         {
-            Client _existingClient = DatabaseHelper.GetClientByName(Name);
+            Client _existingClient = ClientController.GetClientByName(Name);
             if (_existingClient != null)
             {
                 Id = _existingClient.Id;
