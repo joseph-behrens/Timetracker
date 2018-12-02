@@ -12,6 +12,8 @@ namespace TimeTracker.Controllers
         public static List<Project> GetProjects()
         {
             // Preconditon: database exists with Project table
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
                 return db.Table<Project>().ToList();
@@ -21,6 +23,8 @@ namespace TimeTracker.Controllers
         public static Project GetProjectByName(string _projectName)
         {
             // Preconditon: database exists with Project table and row containing given project name
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
                 try
@@ -37,6 +41,8 @@ namespace TimeTracker.Controllers
         public static Project GetProjectById(int _projectId)
         {
             // Preconditon: database exists with Project table and row containing given project Id
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
                 try
@@ -52,6 +58,8 @@ namespace TimeTracker.Controllers
 
         public static List<Project> GetProjectsByClientId(int _clientId)
         {
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
                 return db.Table<Project>().Where(p => p.ClientId == _clientId).ToList();
@@ -60,6 +68,8 @@ namespace TimeTracker.Controllers
 
         public static void AddProject(Project _newProject)
         {
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
                 // Precondition: new project must not already exist but provided project must
@@ -72,6 +82,8 @@ namespace TimeTracker.Controllers
 
         public static void DeleteProject(Project _project)
         {
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
                 // Precondition: project must already exist

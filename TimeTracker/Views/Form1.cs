@@ -86,26 +86,29 @@ namespace TimeTracker
 
             Project _newProject = new Project();
 
+            // Preconditon: If selected item and the text field are not null
             if (ProjectDropDown.SelectedItem != null)
             {
                 _newProject.Name = ProjectDropDown.SelectedItem.ToString();
             }
-            else
+            else if (!String.IsNullOrEmpty(ProjectDropDown.Text))
             {
                 _newProject.Name = ProjectDropDown.Text;
             }
 
             Client _newClient = new Client();
 
+            // Preconditon: If selected item and the text field are not null
             if (ClientDropDown.SelectedItem != null)
             {
                 _newClient.Name = ClientDropDown.SelectedItem.ToString();
             }
-            else
+            else if (!String.IsNullOrEmpty(ClientDropDown.Text))
             {
                 _newClient.Name = ClientDropDown.Text;
             }
 
+            // Preconditon: If there isn't a new client create it
             if (!(_newClient.Exists()))
             {
                 ClientController.AddClient(_newClient);
@@ -114,11 +117,12 @@ namespace TimeTracker
             _newProject.ClientId = _newClient.Id;
             _newProject.Client = _newClient;
 
+            // Preconditon: project is not null
             if (_newProject.Exists())
             {
                 _newProject.Id = ProjectController.GetProjectsByClientId(_newClient.Id).Where(p => p.Name == _newProject.Name).First().Id;
             }
-            else
+            else if (_newProject != null)
             {
                 ProjectController.AddProject(_newProject);
             }

@@ -12,7 +12,9 @@ namespace TimeTracker.Controllers
 
         public static List<Client> GetClients()
         {
-            // Preconditon: database exists with Client table
+            // Preconditons: database exists
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
                 return db.Table<Client>().ToList();
@@ -21,9 +23,11 @@ namespace TimeTracker.Controllers
 
         public static Client GetClientByName(string _clientName)
         {
-            // Preconditon: database exists with Client table and row with provided client name
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
+                // Preconditon: database exists with Client table and row with provided client name
                 try
                 {
                     return db.Table<Client>().Where(c => c.Name == _clientName).First();
@@ -37,9 +41,11 @@ namespace TimeTracker.Controllers
 
         public static Client GetClientById(int _clientId)
         {
-            // Preconditon: database exists with Client table and row with provided client name
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
+                // Preconditon: database exists with Client table and row with provided client name
                 try
                 {
                     return db.Table<Client>().Where(c => c.Id == _clientId).First();
@@ -53,23 +59,30 @@ namespace TimeTracker.Controllers
 
         public static void DeleteProject(Client _client)
         {
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
-                db.Delete(_client);
+                //Preconditon: client to delete must exist
+                if (_client.Exists())
+                {
+                    db.Delete(_client);
+                }
             }
         }
 
         public static void AddClient(Client _newClient)
         {
-            // Precondition: given client ojbect is not null
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
+                // Precondition: given client ojbect is not null                
                 if (_newClient != null)
                 {
                     db.Insert(_newClient);
                 }
             }
         }
-
     }
 }

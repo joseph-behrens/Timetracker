@@ -12,6 +12,8 @@ namespace TimeTracker.Controllers
 
         public static List<Task> GetTasks()
         {
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
                 return db.Table<Task>().ToList();
@@ -20,9 +22,11 @@ namespace TimeTracker.Controllers
 
         public static void AddTask(Task _newTask)
         {
-            // Precondtion given task is not null
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
+                // Precondtion given task is not null
                 if (_newTask != null)
                 {
                     db.Insert(_newTask);
@@ -32,9 +36,15 @@ namespace TimeTracker.Controllers
 
         public static void DeleteTask(Task _task)
         {
+            DatabaseExceptions.ValidateConnectionString(_databaseFile);
+
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
-                db.Delete(_task);
+                // Precondtion given task is not null
+                if (_task != null)
+                {
+                    db.Delete(_task);
+                }
             }
         }
     }

@@ -12,15 +12,12 @@ namespace TimeTracker.Data
 
         public static void InitialiseDb()
         {
-            // Precondition: Tables are available
             using (var db = new SQLiteConnection(_databaseFile, true))
             {
                 db.CreateTable<Task>();
                 db.CreateTable<Client>();
                 db.CreateTable<Project>();
-                db.Close();
             }
-            // Postcondition: DB created and tables present
         }
 
         public static string GetDatabaseConnection()
