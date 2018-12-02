@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SQLite;
 using TimeTracker.Data;
@@ -17,7 +18,7 @@ namespace TimeTracker.Controllers
             }
         }
 
-        internal static void AddTask(Task _newTask)
+        public static void AddTask(Task _newTask)
         {
             // Precondtion given task is not null
             using (var db = new SQLiteConnection(_databaseFile, true))
@@ -26,6 +27,14 @@ namespace TimeTracker.Controllers
                 {
                     db.Insert(_newTask);
                 }
+            }
+        }
+
+        public static void DeleteTask(Task _task)
+        {
+            using (var db = new SQLiteConnection(_databaseFile, true))
+            {
+                db.Delete(_task);
             }
         }
     }
