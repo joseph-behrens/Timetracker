@@ -2,6 +2,7 @@
 using SQLite;
 using System.Linq;
 using TimeTracker.Data;
+using System;
 
 namespace TimeTracker.Controllers
 {
@@ -34,7 +35,7 @@ namespace TimeTracker.Controllers
             }
         }
 
-        internal static Client GetClientById(int _clientId)
+        public static Client GetClientById(int _clientId)
         {
             // Preconditon: database exists with Client table and row with provided client name
             using (var db = new SQLiteConnection(_databaseFile, true))
@@ -50,7 +51,15 @@ namespace TimeTracker.Controllers
             }
         }
 
-        internal static void AddClient(Client _newClient)
+        public static void DeleteProject(Client _client)
+        {
+            using (var db = new SQLiteConnection(_databaseFile, true))
+            {
+                db.Delete(_client);
+            }
+        }
+
+        public static void AddClient(Client _newClient)
         {
             // Precondition: given client ojbect is not null
             using (var db = new SQLiteConnection(_databaseFile, true))
