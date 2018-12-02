@@ -10,8 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
-
-
+using TimeTracker.Data;
 
 /// <summary>
 /// TODO: Add stopwatch class and move stopWatch logic
@@ -25,8 +24,9 @@ namespace TimeTracker
 
         public Form1()
         {
-            string dbFile = SqLiteDb.GetPath();
+            DatabaseHelper.InitialiseDb();
             InitializeComponent();
+            UpdateClientDropDown();
             toolTip1.SetToolTip(buttonHup, "Add one hour");
             toolTip1.SetToolTip(buttonHdown, "Subtract one hour");
             toolTip1.SetToolTip(buttonMup, "Add one minute");
@@ -89,15 +89,59 @@ namespace TimeTracker
         private void button2_Click(object sender, EventArgs e)
         {
             stopWatch.Stop();
-            ProjectTask projectTask = new ProjectTask(textBoxProject.Text, textBoxNotes.Text, textBoxTime.Text);
-            SqLiteDb.AddTask(projectTask);
+
+            Project _newProject = new Project();
+
+            if (ProjectDropDown.SelectedItem != null)
+            {
+                _newProject.Name = ProjectDropDown.SelectedItem.ToString();
+            }
+            else
+            {
+                _newProject.Name = ProjectDropDown.Text;
+            }
+
+            Client _newClient = new Client();
+
+            if (ClientDropDown.SelectedItem != null)
+            {
+                _newClient.Name = ClientDropDown.SelectedItem.ToString();
+            }
+            else
+            {
+                _newClient.Name = ClientDropDown.Text;
+            }
+
+            if (!(_newClient.Exists()))
+            {
+                DatabaseHelper.AddClient(_newClient);
+            }
+
+            _newProject.ClientId = _newClient.Id;
+            _newProject.Client = _newClient;
+
+            if (_newProject.Exists())
+            {
+                _newProject.Id = DatabaseHelper.GetProjectsByClientId(_newClient.Id).Where(p => p.Name == _newProject.Name).First().Id;
+            }
+            else
+            {
+                DatabaseHelper.AddProject(_newProject);
+            }
+
+            Task _newTask = new Task(_newProject.Id, textBoxNotes.Text, textBoxTime.Text);
+            DatabaseHelper.AddTask(_newTask);
             ClearForm();
         }
 
         private void ClearForm()
         {
             textBoxNotes.Clear();
-            textBoxProject.Clear();
+            ClientDropDown.ResetText();
+            ClientDropDown.Items.Clear();
+            ProjectDropDown.ResetText();
+            ProjectDropDown.Items.Clear();
+            UpdateClientDropDown();
             addedTime = new TimeSpan(0, 0, 0);
             stopWatch.Reset();
             textBoxTime.Text = "00:00:00";
@@ -109,7 +153,6 @@ namespace TimeTracker
             Form2 f = new Form2();
             f.SetReport();
             f.Show();
-            Report.ViewReport();
         }
 
         private void buttonHup_Click(object sender, EventArgs e)
@@ -139,6 +182,46 @@ namespace TimeTracker
         private void buttonOpenAnother_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("TimeTracker.exe");
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProjectDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClientDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateProjectDropDown(ClientDropDown.SelectedItem.ToString());
+        }
+
+        private void UpdateClientDropDown()
+        {
+            ClientDropDown.Items.Clear();
+            List<Client> _clients = DatabaseHelper.GetClients();
+
+            foreach (var _client in _clients)
+            {
+                ClientDropDown.Items.Add(_client.Name);
+            }
+        }
+
+        private void UpdateProjectDropDown(string _clientName)
+        {
+            ProjectDropDown.Items.Clear();
+            ProjectDropDown.ResetText();
+
+            var _clientId = DatabaseHelper.GetClientByName(_clientName).Id;
+            List<Project> _projects = DatabaseHelper.GetProjectsByClientId(_clientId);
+
+            foreach (var _project in _projects)
+            {
+                ProjectDropDown.Items.Add(_project.Name);
+            }
         }
     }
 }
